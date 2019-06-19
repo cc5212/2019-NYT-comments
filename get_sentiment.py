@@ -41,19 +41,38 @@ def get_sentiment_score(comment, sentiment_dict):
 
 
 if __name__ == '__main__':
-    spark = SparkSession\
-        .builder\
-        .appName("BuildSentimentWP")\
+    spark = SparkSession \
+        .builder \
+        .appName("BuildSentimentWP") \
         .getOrCreate()
 
     sentiment_dict = get_sentiment_dict("/uhadoop2019/dpi/sentiment-dict.json")
     print(sentiment_dict.keys())
 
-    df = spark.read.option('header', 'true').csv("hdfs://cm:9000/uhadoop2019/dpi/CommentsApril2017.csv.gz")
+    comments = spark.read.option('header', 'true').option("delimiter", ",").option('quote', '"').option('escape', '"')
+    df = spark.read.option('header', 'true') \
+        .option("delimiter", ",") \
+        .option('quote', '"') \
+        .option('multiLine', 'true') \
+        .option('parserLib', 'univocity') \
+        .csv("hdfs://cm:9000/uhadoop2019/dpi/CommentsApril2017.csv.gz")
 
     # df.rdd.map(lambda x: )
     print(df.take(1))
-    df = df.rdd.map(lambda x: (x[1], x[2], x[6], x[28]))\
-        .toDF(['commentBody', 'commentId', 'createDate', 'articleID'])
-    print(df.take(1))
 
+
+    def callback(row):
+        if None in row:
+            return []
+        return (row[0],  # commentBody
+                row[1],  # commentID
+                row[2],  # createDate
+                row[3],  # articleID
+                str(get_sentiment_score(row[0], sentiment_dict)))
+
+    df = df.select('commentBody', 'commentId', 'createDate', 'articleID')
+    df = df.na.drop()
+    df = df.rdd.map(callback)\
+        .toDF(['commentBody', 'commentId', 'createDate', 'articleID', 'sentimentScore'])
+    df.write.csv("hdfs://cm:9000/uhadoop2019/dpi/test2")
+    print(df.take(1))
