@@ -1,16 +1,14 @@
 from __future__ import print_function
 
 import json
-import pickle
 import re
 import string
 import subprocess
-import sys
-from operator import add
 
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import approx_count_distinct
 from stopwords import ENGLISH_STOP_WORDS
+
 
 def get_sentiment_dict(hdfs_path):
     cat = subprocess.Popen(["hadoop", "dfs", "-cat", hdfs_path],
@@ -33,10 +31,6 @@ def get_word_sentiment(word, sentiment_dict):
     return 0
 
 
-# stem word
-
-
-
 def get_sentiment_score(comment, sentiment_dict):
     # remove punctuation and get words
     words = re.sub('['+string.punctuation+']', '', comment).split()
@@ -44,7 +38,6 @@ def get_sentiment_score(comment, sentiment_dict):
     score = sum([get_word_sentiment(word, sentiment_dict) for word in words])
 
     return score
-
 
 
 if __name__ == '__main__':
