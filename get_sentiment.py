@@ -1,15 +1,17 @@
 from __future__ import print_function
 
-import json
-import re
-import string
-import subprocess
-
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import avg
-from stopwords import ENGLISH_STOP_WORDS
 
 
+def nltk_sentiment(sentence):
+    from nltk.sentiment.vader import SentimentIntensityAnalyzer
+    nltk_sentiment = SentimentIntensityAnalyzer()
+    score = nltk_sentiment.polarity_scores(sentence)
+    return score['compound']
+
+
+"""  This es deprecated for being too naive :3
 def get_sentiment_dict(hdfs_path):
     cat = subprocess.Popen(["hadoop", "dfs", "-cat", hdfs_path],
                            stdout=subprocess.PIPE)
@@ -39,6 +41,8 @@ def get_sentiment_score(comment, sentiment_dict):
     score = sum([get_word_sentiment(word, sentiment_dict) for word in words])
 
     return score
+    
+"""
 
 
 if __name__ == '__main__':
@@ -47,8 +51,7 @@ if __name__ == '__main__':
         .appName("BuildSentimentWP") \
         .getOrCreate()
 
-    sentiment_dict = get_sentiment_dict("/uhadoop2019/dpi/sentiment-dict.json")
-    print(sentiment_dict.keys())
+    spark.sparkContext.addPyFile('vendor.zip')
 
     df = spark.read.option('header', 'true') \
         .option("delimiter", ",") \
@@ -67,12 +70,13 @@ if __name__ == '__main__':
                 row[1],  # commentID
                 row[2],  # createDate
                 row[3],  # articleID
-                str(get_sentiment_score(row[0], sentiment_dict)))
+                str(nltk_sentiment(row[0])))
 
     df = df.select('commentBody', 'commentId', 'createDate', 'articleID')
     df = df.na.drop()
     df = df.rdd.map(callback)\
         .toDF(['commentBody', 'commentId', 'createDate', 'articleID', 'sentimentScore'])
+    df.show()
     df.write.csv("hdfs://cm:9000/uhadoop2019/dpi/test2")
 
     df.cache()
@@ -89,5 +93,4 @@ if __name__ == '__main__':
     joined_df = joined_df.groupBy('articleID').agg(avg('SentimentScore').alias('avg_score'))
 
     joined_df.write.csv("hdfs://cm:9000/uhadoop2019/dpi/avg_score_article")
-
     print(joined_df.show())
