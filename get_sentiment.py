@@ -6,7 +6,7 @@ import string
 import subprocess
 
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import approx_count_distinct
+from pyspark.sql.functions import avg
 from stopwords import ENGLISH_STOP_WORDS
 
 
@@ -18,6 +18,7 @@ def get_sentiment_dict(hdfs_path):
 
 
 def get_word_sentiment(word, sentiment_dict):
+    word = word.lower()
     if word not in ENGLISH_STOP_WORDS:
         try:
             score = sentiment_dict[word]['value']
@@ -49,7 +50,6 @@ if __name__ == '__main__':
     sentiment_dict = get_sentiment_dict("/uhadoop2019/dpi/sentiment-dict.json")
     print(sentiment_dict.keys())
 
-    comments = spark.read.option('header', 'true').option("delimiter", ",").option('quote', '"').option('escape', '"')
     df = spark.read.option('header', 'true') \
         .option("delimiter", ",") \
         .option('quote', '"') \
@@ -57,7 +57,6 @@ if __name__ == '__main__':
         .option('parserLib', 'univocity') \
         .csv("hdfs://cm:9000/uhadoop2019/dpi/CommentsApril2017.csv.gz")
 
-    # df.rdd.map(lambda x: )
     print(df.take(1))
 
 
@@ -75,4 +74,20 @@ if __name__ == '__main__':
     df = df.rdd.map(callback)\
         .toDF(['commentBody', 'commentId', 'createDate', 'articleID', 'sentimentScore'])
     df.write.csv("hdfs://cm:9000/uhadoop2019/dpi/test2")
-    print(df.take(1))
+
+    df.cache()
+
+    # get avg score per article
+    article_df = spark.read.option('header', 'true') \
+        .option("delimiter", ",") \
+        .option('quote', '"') \
+        .option('multiLine', 'true') \
+        .option('parserLib', 'univocity') \
+        .csv("hdfs://cm:9000/uhadoop2019/dpi/ArticlesApril2017.csv.gz")
+
+    joined_df = article_df.join(df, 'articleID')
+    joined_df = joined_df.groupBy('articleID').agg(avg('SentimentScore').alias('avg_score'))
+
+    joined_df.write.csv("hdfs://cm:9000/uhadoop2019/dpi/avg_score_article")
+
+    print(joined_df.show())
