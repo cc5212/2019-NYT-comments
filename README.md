@@ -14,7 +14,7 @@ El dataset utilizado se descargo del sitio "https://www.kaggle.com/aashita/nyt-c
 Solo se utilizó la mitad del dataset, correspondiente a los datos de 2017, y que pesa 286 MB comprimido, y 892,7 MB descomprimido. El resto de los datos fueron omitidos para simplificar el análisis y mantener los resultados cohesionados (no tener un salto de 7 meses entre unos datos y otros). Además, este periodo coincide con los primeros meses del mandato de Donald Trump.
 
 
-Los datos de los artículos son pequeños en comparación a los coentarios, no contiene tantas columnas y tampoco contiene el cuerpo del articulo. De todas las columnas consideraremos los siguientes atributos: (articleID, headline, keywords). En promedio, por mes se tienen entre 800 y 1200 artículos.
+Los datos de los artículos son pequeños en comparación a los comentarios, no contiene tantas columnas y tampoco contiene el cuerpo del articulo. De todas las columnas consideraremos los siguientes atributos: (articleID, headline, keywords). En promedio, por mes se tienen entre 800 y 1200 artículos.
 
 
 Por su parte, los comentarios son bastante más extensos, ya que estos contienen el comentario completo y varios otros atributos de los que usaremos: (commentBody, commentID, articleID). En promedio, por mes se tienen entre 210.000 y 250.000 comentarios.
