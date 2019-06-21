@@ -23,19 +23,38 @@ Por su parte, los comentarios son bastante más extensos, ya que estos contienen
 
 # Resultados
 A continuación se muestran distintos histogramas de sentiment score para los comentarios de distintos articulos:
-<figure>
-<img src="graficos/husband.png"
-     alt="Sentiment Score husband"
-     class="center"
-     style="float: left; margin-right: 5px;" />
- 
-<figcaption><p style="text-align: center;">Distribución de puntaje  "You May Want to Marry My Husband"</p></figcaption>   
-</figure>
+
 <figure>
 <img src="graficos/putin.png"
      alt="Sentiment Score putin"
      class="center"
      style="float: left; margin-right: 5px;" />
  
-<figcaption><p style="text-align: center;">Distribución de puntaje  "You May Want to Marry My Husband"</p></figcaption>   
+<figcaption><p style="text-align: center;">Distribución de puntaje<a href="https://www.nytimes.com/2017/01/06/us/politics/donald-trump-wall-hack-russia.html"> "Putin Led Scheme to Aid Trump, Report Says"</a></p></figcaption>   
+</figure>
+</figure>
+<figure>
+<img src="graficos/politics.png"
+     alt="Sentiment Score House G.O.P. Abandons Bid to Stifle Ethics Office"
+     class="center"
+     style="float: left; margin-right: 5px;" />
+ 
+<figcaption><p style="text-align: center;">Distribución de puntaje <a href="https://www.nytimes.com/2017/01/03/us/politics/trump-house-ethics-office.html">"House G.O.P. Abandons Bid to Stifle Ethics Office"</a></p></figcaption>   
+</figure>
+<figure>
+<img src="graficos/travel.png"
+     alt="Sentiment Score travel"
+     class="center"
+     style="float: left; margin-right: 5px;" />
+ 
+<figcaption><p style="text-align: center;">Distribución de puntaje <a href="https://www.nytimes.com/2017/04/01/travel/vancouver-british-columbia-canada-unfolding-story-culture.html">"An Ever-Unfolding Story"</a></p></figcaption>   
+</figure>
+
+<figure>
+<img src="graficos/husband.png"
+     alt="Sentiment Score husband"
+     class="center"
+     style="float: left; margin-right: 5px;" />
+ 
+<figcaption><p style="text-align: center;">Distribución de puntaje <a href="https://www.nytimes.com/2017/03/03/style/modern-love-you-may-want-to-marry-my-husband.html">"You May Want to Marry My Husband"</a></p></figcaption>   
 </figure>
