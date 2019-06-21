@@ -24,7 +24,8 @@ Por su parte, los comentarios son bastante más extensos, ya que estos contienen
 # Resultados
 Se calcularon los keywords que más generaban comentarios por año, resultados que estan en <a href= 	"top10_comments.txt">top10_comments.txt</a>, en la Fig. 1 se grafic el ranking del mes de enero.
 
-<figure align="center">
+<div align="center">
+<figure>
 <img src="graficos/enero.png"
      alt="enero"
      class="center"     
@@ -34,9 +35,11 @@ Se calcularon los keywords que más generaban comentarios por año, resultados q
 
 <figcaption><p style="text-align: center;">Fig 1.  top 10 keywords más comentadas de enero</a></p></figcaption>   
 </figure>
+</div>
  <br />
 
- <figure align="center">
+<div align="center">
+ <figure>
 <img src="graficos/kw.png"
      alt="keywords evolution"
      class="center"     
@@ -45,11 +48,13 @@ Se calcularon los keywords que más generaban comentarios por año, resultados q
  
 <figcaption><p style="text-align: center;">Fig 2.  evolución de keywords entre enero y mayo 2017</a></p></figcaption>   
 </figure>
+</div>
  <br />
 
 A continuación se muestran distintos histogramas de sentiment score para los comentarios de distintos articulos:
-  
-<figure align="center">
+
+<div align="center">
+<figure>
 <img src="graficos/putin.png"
      alt="Sentiment Score putin"
      width="40%"
@@ -58,6 +63,7 @@ A continuación se muestran distintos histogramas de sentiment score para los co
  
 <figcaption><p style="text-align: center;">Fig 3. Distribución de puntaje<a href="https://www.nytimes.com/2017/01/06/us/politics/donald-trump-wall-hack-russia.html"> "Putin Led Scheme to Aid Trump, Report Says"</a></p></figcaption>   
 </figure>
+</div>
 <br />
   
 
@@ -75,8 +81,8 @@ A continuación se muestran distintos histogramas de sentiment score para los co
 <br />
 
 
-
-<figure align="center">
+<div align="center">
+<figure>
 <img src="graficos/travel.png"
      alt="Sentiment Score travel"
      class="center"     
@@ -85,11 +91,12 @@ A continuación se muestran distintos histogramas de sentiment score para los co
  
 <figcaption><p style="text-align: center;">Fig 5. Distribución de puntaje <a href="https://www.nytimes.com/2017/04/01/travel/vancouver-british-columbia-canada-unfolding-story-culture.html">"An Ever-Unfolding Story"  </a></p></figcaption>   
 </figure>
+</div>
 <br />
   
 
-
-<figure align="center">
+<div align="center">
+<figure>
 <img src="graficos/husband.png"
      alt="Sentiment Score husband"
      class="center"     
@@ -98,4 +105,5 @@ A continuación se muestran distintos histogramas de sentiment score para los co
  
 <figcaption><p style="text-align: center;">Fig 6. Distribución de puntaje <a href="https://www.nytimes.com/2017/03/03/style/modern-love-you-may-want-to-marry-my-husband.html">"You May Want to Marry My Husband"  </a></p></figcaption>   
 </figure>
+</div>
   <br />
