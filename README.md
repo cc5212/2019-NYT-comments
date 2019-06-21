@@ -21,6 +21,10 @@ Por su parte, los comentarios son bastante más extensos, ya que estos contienen
 
 # Metodología
 
+Para realizar el procesamiento y análisis de los datos de utilizó Spark. Para el tamaño de los datos considerados fue posible realizar la unión de las tablas de artículos y comentarios, realizar el conteo de comentario por artículo y luego realizar el conteo de comentario por cada una de la keywords asociadas a los comentarios.
+
+Para realizar el análisis de opinión, en primer lugar se contruyó un analizador que contaría la cantidad de palabras negativas y positivas en un texto, dado un mapeo de palabras hacia un valoración positiva, negativa o neutral (ver [lexicon](http://mpqa.cs.pitt.edu/lexicons/subj_lexicon/)). La simplicidad de esta herramienta permite realizar un procesamiento rápido pero no entrega buenos resultados, por lo que se decidió utilizar una librería para calcular una valoración para cada comentario. La librería usada fue [nltk](https://www.nltk.org/). Sin embargo, el costo de la mejora en la precisión de la valoración obtenida para cada comentario fue un aumento considerable del tiempo de procesamiento, tanto que no fue posible realizar la valoración de opinión de todos los comentarios del dataset. La opción tomada finalmente fue escoger manualmente artículos de distintas temáticas, que a priori deberían tener una distribución de valoración muy diferente entre ellos, para luego observar experimentalmente si esto es cierto o no. Cabe destacar en este caso al dificultad de poder suplir a todos los nodos de un sistema distribuido la información y herrameintas necesarias para procesar la información, específicamente al momento de disponibilizar la librería utilizada en todos los nodos, y más aún cuando esta librería necesita actualizar desde fuentes externas los diccionarios que utiliza antes de utilizarla por primera vez.
+
 # Resultados
 Se calcularon los keywords que más generaban comentarios por año, resultados que estan en <a href= 	"top10_comments.txt">top10_comments.txt</a>, en la Fig. 1 se grafic el ranking del mes de enero.
 
