@@ -119,7 +119,7 @@ A continuación se muestran distintos histogramas de sentiment score para los co
 # Conclusiones y Aprendizajes
 
 
-Los resultados obtenidos nos confirman que los artículos que atraen una mayor cantidad de comentarios son aquellos principalmente relacionados con política. Se nota una clara tendencia en las keywords, ya que, en promedio las diez primeras más comentadas para todos los meses analizados tienen que ver con el gobierno de U.S y/o política en general. En cuanto a los comentarios de noticias con estos tópicos, a pesar que el sentiment score promedio es cercano a 0, se puede ver una clara polaridad en las opiniones. Para otro tipo de artículos, como los de estilo de vida, se ve claramente que la valoración de sus comentarios tiende mucho más a ser positiva.
+Los resultados obtenidos nos confirman que los artículos que atraen una mayor cantidad de comentarios son aquellos principalmente relacionados con política. Se nota una clara tendencia en las keywords, ya que, en promedio las diez primeras más comentadas para todos los meses analizados tienen que ver con el gobierno de U.S y/o política en general. En cuanto a los comentarios de noticias con estos tópicos analizados, a pesar que el sentiment score promedio es cercano a 0, se puede ver una clara polaridad en las opiniones. Para otro tipo de artículos, como los de estilo de vida, se ve claramente que la valoración de sus comentarios tiende mucho más a ser positiva.
 
 En cuanto a las herramientas utilizadas, notamos que en pyspark se hace más rápido escribir scripts comparado con su contraparte de Java, pero no está del todo preparado para procesar csv, en particular se tuvo problemas con los salto de líneas dentro de los comentarios por lo cual se tuvo que preprocesar esos comentarios.
 
