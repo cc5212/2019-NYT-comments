@@ -121,7 +121,7 @@ A continuación se muestran distintos histogramas de sentiment score para los co
 # Conclusiones y Aprendizajes
 
 
-Se nota una clara tendencia en donde las keywords más comentadas tienen que ver con el gobierno de U.S y política en general, y en los comentarios de noticias con estos tópicos, aun cuando el sentiment score promedio era cercano a 0, se puede ver una clara polaridad en las opiniones de los comentaristas.
+Se nota una clara tendencia en las keywords, ya que, en promedio las diez primeras más comentadas para todos los meses analizados tienen que ver con el gobierno de U.S y/o política en general. En cuanto a los comentarios de noticias con estos tópicos, a pesar que el sentiment score promedio es cercano a 0, se puede ver una clara polaridad en las opiniones.
 
 En cuanto a las herramientas utilizadas, notamos que en pyspark se hace más rápido escribir scrypts comparado con su contraparte de Java, pero no está del todo preparado para procesar csv, en particular se tuvo problemas con los salto de líneas dentro de los comentarios por lo cual se tuvo que preprocesar esos comentarios.
 
