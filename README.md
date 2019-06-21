@@ -24,4 +24,5 @@ Por su parte, los comentarios son bastante más extensos, ya que estos contienen
 # Resultados
 A continuación se muestran distintos histogramas de sentiment score para los comentarios de distintos articulos:
 ![Distribución de sentimientos "You May Want to Marry My Husband"](https://github.com/cc5212/2019-NYT-comments/blob/master/graficos/husband.png)
-*Distribución de sentimientos "You May Want to Marry My Husband"*
+
+->Distribución de sentimientos "You May Want to Marry My Husband"<-
