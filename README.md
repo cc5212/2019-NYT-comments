@@ -21,3 +21,5 @@ Por su parte, los comentarios son bastante más extensos, ya que estos contienen
 
 # Metodología
 
+# Resultados
+![](https://github.com/cc5212/2019-NYT-comments/blob/master/graficos/husband.png)
