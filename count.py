@@ -9,8 +9,7 @@ import sys
 from operator import add
 
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import approx_count_distinct
-
+from pyspark.sql.functions import approx_count_distinct, sum, avg, desc
 
 def get_sentiment_dict(hdfs_path):
     cat = subprocess.Popen(["hadoop", "dfs", "-cat", hdfs_path],
@@ -43,23 +42,35 @@ def get_sentiment_score(comment, sentiment_dict):
         pass
 
 
-
+##"hdfs://cm:9000/uhadoop2019/dpi/ArticlesMay2017.csv.gz"
+##hdfs://cm:9000/uhadoop2019/dpi/CommentsMay2017.csv.gz
+##hdfs://cm:9000/uhadoop2019/dpi/count/may
 if __name__ == '__main__':
+    if len(sys.argv)!=4:        
+        print("comentarios, articulos, output")
+        sys.exit
+    else:
+        commentcsv=sys.argv[2]
+        articlecsv=sys.argv[1]
+        outputcsv=sys.argv[3]
+
+    
     spark = SparkSession\
         .builder\
         .appName("BuildSentimentWP")\
         .getOrCreate()
 
 
-    comments = spark.read.option('header', 'true').option("delimiter",",").option('quote', '"').option('escape', '"').option('multiline','true').csv("hdfs://cm:9000/uhadoop2019/dpi/CommentsApril2017.csv.gz")
+    comments = spark.read.option('header', 'true').option("delimiter",",").option('quote', '"').option('escape', '"').option('multiline','true').csv(commentcsv)
     comments=comments.select('commentBody', 'commentId', 'createDate', 'articleID')
     comments = comments.na.drop()
     grupitos=comments.groupby(comments.articleID).count()
 
 
-    articles = spark.read.option('header', 'true').option("delimiter",",").option('quote', '"').option('escape', '"').csv("hdfs://cm:9000/uhadoop2019/dpi/ArticlesApril2017.csv.gz")
+    articles = spark.read.option('header', 'true').option("delimiter",",").option('quote', '"').option('escape', '"').csv(articlecsv)
     articles=articles.select('articleID','keywords')
     ta = articles.alias('ta')
     tg = grupitos.alias('tg')
-    inner_join = ta.join(tg, ta.articleID == tg.articleID)
-    grupitos.repartition(1).write.csv("hdfs://cm:9000/uhadoop2019/dpi/contador.csv")
+    inner_join = ta.join(tg, on= 'articleID')
+    inner_join=inner_join.orderBy(desc('count'))
+    inner_join.repartition(1).write.csv(outputcsv)
