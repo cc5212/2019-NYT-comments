@@ -22,39 +22,80 @@ Por su parte, los comentarios son bastante más extensos, ya que estos contienen
 # Metodología
 
 # Resultados
-A continuación se muestran distintos histogramas de sentiment score para los comentarios de distintos articulos:
+Se calcularon los keywords que más generaban comentarios por año, resultados que estan en <a href= 	"top10_comments.txt">top10_comments.txt</a>, en la Fig. 1 se grafic el ranking del mes de enero.
 
-<figure>
+<figure align="center">
+<img src="graficos/enero.png"
+     alt="enero"
+     class="center"     
+     width="40%"
+     height="40%"/>
+ 
+
+<figcaption><p style="text-align: center;">Fig 1.  top 10 keywords más comentadas de enero</a></p></figcaption>   
+</figure>
+ <br />
+
+ <figure align="center">
+<img src="graficos/kw.png"
+     alt="keywords evolution"
+     class="center"     
+     width="40%"
+     height="40%"/>
+ 
+<figcaption><p style="text-align: center;">Fig 2.  evolución de keywords entre enero y mayo 2017</a></p></figcaption>   
+</figure>
+ <br />
+
+A continuación se muestran distintos histogramas de sentiment score para los comentarios de distintos articulos:
+  
+<figure align="center">
 <img src="graficos/putin.png"
      alt="Sentiment Score putin"
-     class="center"
-     style="float: left; margin-right: 5px;" />
+     width="40%"
+     height="40%"
+     class="center"/>
  
-<figcaption><p style="text-align: center;">Distribución de puntaje<a href="https://www.nytimes.com/2017/01/06/us/politics/donald-trump-wall-hack-russia.html"> "Putin Led Scheme to Aid Trump, Report Says"</a></p></figcaption>   
+<figcaption><p style="text-align: center;">Fig 3. Distribución de puntaje<a href="https://www.nytimes.com/2017/01/06/us/politics/donald-trump-wall-hack-russia.html"> "Putin Led Scheme to Aid Trump, Report Says"</a></p></figcaption>   
 </figure>
-</figure>
+<br />
+  
+
+<div align="center">
 <figure>
 <img src="graficos/politics.png"
      alt="Sentiment Score House G.O.P. Abandons Bid to Stifle Ethics Office"
-     class="center"
-     style="float: left; margin-right: 5px;" />
+     class="center"     
+     width="40%"
+     height="40%" />
  
-<figcaption><p style="text-align: center;">Distribución de puntaje <a href="https://www.nytimes.com/2017/01/03/us/politics/trump-house-ethics-office.html">"House G.O.P. Abandons Bid to Stifle Ethics Office"</a></p></figcaption>   
+<figcaption><p style="text-align: center;">Fig 4. Distribución de puntaje <a href="https://www.nytimes.com/2017/01/03/us/politics/trump-house-ethics-office.html">"House G.O.P. Abandons Bid to Stifle Ethics Office"</a></p></figcaption> 
 </figure>
-<figure>
+</div>
+<br />
+
+
+
+<figure align="center">
 <img src="graficos/travel.png"
      alt="Sentiment Score travel"
-     class="center"
-     style="float: left; margin-right: 5px;" />
+     class="center"     
+     width="40%"
+     height="40%" />
  
-<figcaption><p style="text-align: center;">Distribución de puntaje <a href="https://www.nytimes.com/2017/04/01/travel/vancouver-british-columbia-canada-unfolding-story-culture.html">"An Ever-Unfolding Story"</a></p></figcaption>   
+<figcaption><p style="text-align: center;">Fig 5. Distribución de puntaje <a href="https://www.nytimes.com/2017/04/01/travel/vancouver-british-columbia-canada-unfolding-story-culture.html">"An Ever-Unfolding Story"  </a></p></figcaption>   
 </figure>
+<br />
+  
 
-<figure>
+
+<figure align="center">
 <img src="graficos/husband.png"
      alt="Sentiment Score husband"
-     class="center"
-     style="float: left; margin-right: 5px;" />
+     class="center"     
+     width="40%"
+     height="40%"/>
  
-<figcaption><p style="text-align: center;">Distribución de puntaje <a href="https://www.nytimes.com/2017/03/03/style/modern-love-you-may-want-to-marry-my-husband.html">"You May Want to Marry My Husband"</a></p></figcaption>   
+<figcaption><p style="text-align: center;">Fig 6. Distribución de puntaje <a href="https://www.nytimes.com/2017/03/03/style/modern-love-you-may-want-to-marry-my-husband.html">"You May Want to Marry My Husband"  </a></p></figcaption>   
 </figure>
+  <br />
