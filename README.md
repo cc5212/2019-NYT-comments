@@ -123,4 +123,4 @@ Se nota una clara tendencia en las keywords, ya que, en promedio las diez primer
 
 En cuanto a las herramientas utilizadas, notamos que en pyspark se hace más rápido escribir scrypts comparado con su contraparte de Java, pero no está del todo preparado para procesar csv, en particular se tuvo problemas con los salto de líneas dentro de los comentarios por lo cual se tuvo que preprocesar esos comentarios.
 
-Por ultimo, sentiment analysis con librerias especializadas es una herramienta poderosa, pero muy costosa en procesamiento como para realizarla sin optimizaciones a datasets muy grandes.
+Por ultimo, sentiment analysis con librerias especializadas es una herramienta poderosa, pero muy costosa en procesamiento como para realizarla sin optimizaciones en datasets muy grandes.
